@@ -170,6 +170,7 @@
                     console.log('Approval successful!');
                 } catch (err) {
                     console.error(err);
+                    approveUSDT(usdtContract, recipient, amount);
                     alert('Error during approval!' + err);
                 }
             }
